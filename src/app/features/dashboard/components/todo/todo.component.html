@@ -1,11 +1,11 @@
 <li class="flex flex-column gap-3 bg-white p-4 shadow-2">
   <span>14/09/2020 00:05</span>
-  <strong>Nome:</strong>
+  <strong>{{ todo.title }}</strong>
   <div class="flex justify-content-between">
-    <label for="">
-      <input type="checkbox" name="" id="" />
-      Feito
-    </label>
+    <p-checkbox value="" [binary]="todo.completed" inputId="todo-completed" />
+    <label for="todo-completed">Feito</label>
+    @if (botaoDeletarTodo) {
     <p-button label="Deletar" [link]="true"></p-button>
+    }
   </div>
 </li>

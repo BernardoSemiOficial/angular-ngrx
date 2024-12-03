@@ -1,12 +1,13 @@
 <app-main-layout>
   <div class="p-6">
+    <a routerLink="/dashboard">Voltar para Dashboard</a>
     <strong class="flex justify-content-center font-bold text-2xl">
       Todos os todos
     </strong>
 
     <div class="flex mt-4 gap-3 mx-auto max-w-30rem">
       <section class="flex-1">
-        <app-todo-list></app-todo-list>
+        <app-todo-list [botaoDeletarTodo]="true"></app-todo-list>
         <p-button label="Carregar mais" styleClass="w-full mt-3"></p-button>
       </section>
     </div>
