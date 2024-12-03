@@ -1,0 +1,23 @@
+<app-main-layout>
+  <div class="p-6">
+    <strong class="flex justify-content-center font-bold text-2xl">
+      Olá, X
+    </strong>
+
+    <div class="flex mt-4 gap-3">
+      <section class="flex-1">
+        <a routerLink="todos" class="mb-2">Ver lista completa</a>
+        <p>Mostrando os últimos 10 todos</p>
+        <app-todo-list></app-todo-list>
+      </section>
+
+      <section class="flex-1">
+        <h2 class="mt-0">Criar novo todo</h2>
+        <div class="flex flex-column gap-1">
+          <input pInputText [(ngModel)]="inputNovoTodo" />
+          <p-button label="Criar todo" styleClass="w-full"></p-button>
+        </div>
+      </section>
+    </div>
+  </div>
+</app-main-layout>
