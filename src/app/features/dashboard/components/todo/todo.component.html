@@ -2,8 +2,10 @@
   <span>14/09/2020 00:05</span>
   <strong>{{ todo.title }}</strong>
   <div class="flex justify-content-between">
-    <p-checkbox value="" [binary]="todo.completed" inputId="todo-completed" />
-    <label for="todo-completed">Feito</label>
+    <div class="flex gap-2 align-items-center">
+      <p-checkbox value="" [binary]="todo.completed" inputId="todo-completed" />
+      <label for="todo-completed">Feito</label>
+    </div>
     @if (botaoDeletarTodo) {
     <p-button label="Deletar" [link]="true"></p-button>
     }

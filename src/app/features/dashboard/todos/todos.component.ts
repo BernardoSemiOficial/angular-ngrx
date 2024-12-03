@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { MainLayoutComponent } from '../../../shared/layouts/main-layout/main-layout.component';
+import { Todo } from '../../../shared/models/todo';
+import { TodosService } from '../../../shared/services/todos.service';
 import { TodoListComponent } from '../components/todo-list/todo-list.component';
 
 @Component({
@@ -11,4 +13,18 @@ import { TodoListComponent } from '../components/todo-list/todo-list.component';
   templateUrl: './todos.component.html',
   styleUrl: './todos.component.scss',
 })
-export class TodosComponent {}
+export class TodosComponent implements OnInit {
+  todos: Todo[] = [];
+
+  constructor(private todosService: TodosService) {}
+
+  ngOnInit() {
+    this.getTodos();
+  }
+
+  getTodos() {
+    return this.todosService.getTodos().subscribe((todos) => {
+      this.todos = todos;
+    });
+  }
+}

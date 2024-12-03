@@ -12,18 +12,27 @@ export class TodosService {
   constructor(private httpClient: HttpClient) {}
 
   getTodos() {
-    this.httpClient.get(`${this.baseURL}/${this.endpoint}`);
+    return this.httpClient.get<Todo[]>(`${this.baseURL}/${this.endpoint}`);
+  }
+
+  findByIdTodo(id: number) {
+    return this.httpClient.get<Todo>(`${this.baseURL}/${this.endpoint}/${id}`);
   }
 
   createTodo(todo: Todo) {
-    this.httpClient.post(`${this.baseURL}/${this.endpoint}`, todo);
+    return this.httpClient.post<Todo>(`${this.baseURL}/${this.endpoint}`, todo);
   }
 
-  updateTodo(id: number, todo: Todo) {
-    this.httpClient.put(`${this.baseURL}/${this.endpoint}/${id}`, todo);
+  updateTodo(id: number, todo: Partial<Omit<Todo, 'id'>>) {
+    return this.httpClient.patch(
+      `${this.baseURL}/${this.endpoint}/${id}`,
+      todo
+    );
   }
 
   deleteTodo(id: number) {
-    this.httpClient.delete(`${this.baseURL}/${this.endpoint}/${id}`);
+    return this.httpClient.delete<void>(
+      `${this.baseURL}/${this.endpoint}/${id}`
+    );
   }
 }

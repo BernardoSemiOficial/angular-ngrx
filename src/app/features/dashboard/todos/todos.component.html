@@ -7,7 +7,10 @@
 
     <div class="flex mt-4 gap-3 mx-auto max-w-30rem">
       <section class="flex-1">
-        <app-todo-list [botaoDeletarTodo]="true"></app-todo-list>
+        <app-todo-list
+          [todos]="todos"
+          [botaoDeletarTodo]="true"
+        ></app-todo-list>
         <p-button label="Carregar mais" styleClass="w-full mt-3"></p-button>
       </section>
     </div>
