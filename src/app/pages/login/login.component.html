@@ -1,12 +1,13 @@
 <app-main-layout>
-  <div class="max-w-30rem m-auto my-8">
+  <div class="max-w-30rem m-auto my-8" [formGroup]="user">
     <div class="flex flex-column gap-2">
       <label for="username">Username</label>
       <input
         pInputText
         id="username"
         aria-describedby="username-help"
-        [(ngModel)]="value"
+        formControlName="username"
+        autocomplete="username"
       />
       <small id="username-help">
         Enter your username to reset your password.
@@ -18,12 +19,13 @@
         pInputText
         id="email"
         aria-describedby="email-help"
-        [(ngModel)]="value"
+        formControlName="email"
+        autocomplete="email"
       />
       <small id="email-help"> Enter your e-mail to reset your password. </small>
     </div>
     <p-button
-      routerLink="/dashboard"
+      (click)="login()"
       label="Login"
       styleClass="mt-4 w-full"
     ></p-button>

@@ -1,18 +1,18 @@
 <app-main-layout>
   <div class="p-6">
     <strong class="flex justify-content-center font-bold text-2xl">
-      Olá, X
+      Olá, {{ user.username }}
     </strong>
 
     <div class="flex mt-4 gap-3">
       <section class="flex-1">
         <a routerLink="todos" class="mb-2">Ver lista completa</a>
-        <p>Mostrando os últimos 10 todos</p>
+        <p>Mostrando os últimos 10 to-dos</p>
         <app-todo-list [todos]="todos"></app-todo-list>
       </section>
 
       <section class="flex-1">
-        <app-create-todo></app-create-todo>
+        <app-create-todo (onCreateTodo)="createTodo($event)"></app-create-todo>
       </section>
     </div>
   </div>

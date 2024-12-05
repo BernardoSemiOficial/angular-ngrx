@@ -2,7 +2,7 @@
   <div class="p-6">
     <a routerLink="/dashboard">Voltar para Dashboard</a>
     <strong class="flex justify-content-center font-bold text-2xl">
-      Todos os todos
+      Todos os to-dos
     </strong>
 
     <div class="flex mt-4 gap-3 mx-auto max-w-30rem">
@@ -10,8 +10,14 @@
         <app-todo-list
           [todos]="todos"
           [botaoDeletarTodo]="true"
+          (onTodoDelete)="deleteTodo($event)"
+          (onTodoMarkAsDone)="markAsDoneDone($event)"
         ></app-todo-list>
-        <p-button label="Carregar mais" styleClass="w-full mt-3"></p-button>
+        <p-button
+          label="Carregar mais"
+          styleClass="w-full mt-3"
+          (click)="loadMore()"
+        ></p-button>
       </section>
     </div>
   </div>

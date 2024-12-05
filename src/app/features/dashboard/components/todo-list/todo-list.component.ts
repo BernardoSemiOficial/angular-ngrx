@@ -1,4 +1,10 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
 import { Todo } from '../../../../shared/models/todo';
 import { TodoComponent } from '../todo/todo.component';
 
@@ -13,4 +19,10 @@ import { TodoComponent } from '../todo/todo.component';
 export class TodoListComponent {
   @Input() todos: Todo[] = [];
   @Input() botaoDeletarTodo = false;
+  @Output() onTodoDelete = new EventEmitter<Todo>();
+  @Output() onTodoMarkAsDone = new EventEmitter<Todo>();
+
+  handleOnTodoMarkAsDone(todo: Todo, isCompleted: boolean) {
+    this.onTodoMarkAsDone.emit({ ...todo, completed: isCompleted });
+  }
 }

@@ -1,5 +1,9 @@
 <h2 class="mt-0">Criar novo todo</h2>
 <div class="flex flex-column gap-1">
-  <input pInputText [(ngModel)]="inputNovoTodo" />
-  <p-button label="Criar todo" styleClass="w-full"></p-button>
+  <input pInputText [(ngModel)]="todo.title" />
+  <p-button
+    label="Criar todo"
+    styleClass="w-full"
+    (click)="createTodo()"
+  ></p-button>
 </div>

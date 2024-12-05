@@ -1,5 +1,10 @@
 <ul class="flex flex-column gap-3 p-0">
   @for (todo of todos; track todo.id) {
-  <app-todo [todo]="todo" [botaoDeletarTodo]="botaoDeletarTodo"></app-todo>
+  <app-todo
+    [todo]="todo"
+    [botaoDeletarTodo]="botaoDeletarTodo"
+    (onTodoDelete)="onTodoDelete.emit(todo)"
+    (onTodoMarkAsDone)="handleOnTodoMarkAsDone(todo, $event)"
+  ></app-todo>
   }
 </ul>

@@ -15,6 +15,7 @@ import { TodoListComponent } from '../components/todo-list/todo-list.component';
 })
 export class TodosComponent implements OnInit {
   todos: Todo[] = [];
+  currentPage = 1;
 
   constructor(private todosService: TodosService) {}
 
@@ -23,8 +24,32 @@ export class TodosComponent implements OnInit {
   }
 
   getTodos() {
-    return this.todosService.getTodos().subscribe((todos) => {
+    this.todosService.getTodos(this.currentPage).subscribe((todos) => {
       this.todos = todos;
     });
+  }
+
+  loadMore() {
+    this.currentPage++;
+    this.todosService.getTodos(this.currentPage).subscribe((todos) => {
+      this.todos = [...this.todos, ...todos];
+    });
+  }
+
+  deleteTodo(todo: Todo) {
+    this.todosService.deleteTodo(todo.id).subscribe(() => {
+      this.todos = this.todos.filter((t) => t.id !== todo.id);
+    });
+  }
+
+  markAsDone(todo: Todo) {
+    this.todosService.deleteTodo(todo.id).subscribe(() => {
+      this.todos = this.todos.filter((t) => t.id !== todo.id);
+    });
+  }
+
+  markAsDoneDone(todo: Todo) {
+    console.log(todo);
+    this.todosService.updateTodo(todo.id, todo).subscribe(() => {});
   }
 }
